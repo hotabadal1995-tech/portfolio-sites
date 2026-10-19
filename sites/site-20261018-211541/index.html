@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chai pe charcha | Cozy Cafe in Pune</title>
+<style>
+:root {
+--primary: #4E342E;
+--secondary: #FF9800;
+--accent: #D7CCC8;
+--bg: #FFF8F1;
+--text: #3E2723;
+--white: #FFFFFF;
+--font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: var(--font-main);
+background-color: var(--bg);
+color: var(--text);
+line-height: 1.6;
+overflow-x: hidden;
+}
+
+/* Animations */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes steam {
+0% { transform: translateY(0) scaleX(1); opacity: 0; }
+50% { transform: translateY(-10px) scaleX(1.2); opacity: 0.5; }
+100% { transform: translateY(-20px) scaleX(1.5); opacity: 0; }
+}
+
+.reveal {
+opacity: 0;
+transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* Layout */
+header {
+padding: 1.5rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: rgba(255, 248, 241, 0.9);
+position: sticky;
+top: 0;
+z-index: 1000;
+backdrop-filter: blur(10px);
+}
+
+.logo {
+display: flex;
+align-items: center;
+gap: 10px;
+text-decoration: none;
+color: var(--primary);
+font-weight: 800;
+font-size: 1.2rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.hero {
+padding: 4rem 1.5rem;
+text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+min-height: 80vh;
+justify-content: center;
+}
+
+.hero h1 {
+font-size: 3rem;
+color: var(--primary);
+margin-bottom: 1rem;
+line-height: 1.1;
+}
+
+.hero p {
+font-size: 1.2rem;
+max-width: 600px;
+margin-bottom: 2rem;
+}
+
+.btn {
+background: var(--secondary);
+color: var(--white);
+padding: 1rem 2rem;
+border-radius: 50px;
+text-decoration: none;
+font-weight: bold;
+transition: transform 0.3s ease;
+display: inline-block;
+}
+
+.btn:hover {
+transform: scale(1.05);
+box-shadow: 0 10px 20px rgba(255, 152, 0, 0.2);
+}
+
+section {
+padding: 5rem 1.5rem;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+.section-title {
+text-align: center;
+font-size: 2.5rem;
+margin-bottom: 3rem;
+color: var(--primary);
+}
+
+/* About Section */
+.about-grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 2rem;
+align-items: center;
+}
+
+/* Menu Section */
+.menu-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2rem;
+}
+
+.menu-card {
+background: var(--white);
+padding: 2rem;
+border-radius: 20px;
+text-align: center;
+box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+transition: transform 0.3s ease;
+}
+
+.menu-card:hover {
+transform: translateY(-10px);
+}
+
+.menu-card svg {
+margin-bottom: 1.5rem;
+}
+
+.menu-card h3 {
+margin-bottom: 1rem;
+color: var(--primary);
+}
+
+/* Testimonials */
+.testimonial-slider {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+}
+
+.testimonial-card {
+background: var(--accent);
+padding: 2rem;
+border-radius: 20px;
+font-style: italic;
+position: relative;
+}
+
+.testimonial-card::after {
+content: "“";
+position: absolute;
+top: 10px;
+right: 20px;
+font-size: 4rem;
+color: rgba(78, 52, 46, 0.1);
+}
+
+.author {
+margin-top: 1rem;
+font-weight: bold;
+font-style: normal;
+display: block;
+color: var(--primary);
+}
+
+/* Contact Section */
+.contact-container {
+background: var(--primary);
+color: var(--white);
+padding: 3rem;
+border-radius: 30px;
+display: grid;
+grid-template-columns: 1fr;
+gap: 2rem;
+}
+
+.contact-info h2 {
+color: var(--secondary);
+margin-bottom: 1rem;
+}
+
+.contact-form input, .contact-form textarea {
+width: 100%;
+padding: 1rem;
+margin-bottom: 1rem;
+border-radius: 10px;
+border: none;
+background: rgba(255,255,255,0.1);
+color: white;
+}
+
+footer {
+background: var(--white);
+padding: 3rem 1.5rem;
+text-align: center;
+border-top: 1px solid var(--accent);
+}
+
+/* SVGs */
+.steam-line {
+fill: none;
+stroke: #A1887F;
+stroke-width: 2;
+stroke-linecap: round;
+animation: steam 2s infinite ease-in-out;
+}
+
+.steam-2 { animation-delay: 0.5s; }
+.steam-3 { animation-delay: 1s; }
+
+@media (min-width: 768px) {
+.about-grid { grid-template-columns: 1fr 1fr; }
+.contact-container { grid-template-columns: 1fr 1fr; }
+.hero h1 { font-size: 5rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<a href="#" class="logo">
+<svg width="40" height="40" viewBox="0 0 100 100">
+<path d="M30 40 Q30 20 50 20 Q70 20 70 40 L70 70 Q70 85 50 85 Q30 85 30 70 Z" fill="var(--secondary)"/>
+<path d="M70 45 Q85 45 85 55 Q85 65 70 65" fill="none" stroke="var(--primary)" stroke-width="5"/>
+<line x1="40" y1="10" x2="40" y2="15" class="steam-line" />
+<line x1="50" y1="5" x2="50" y2="12" class="steam-line steam-2" />
+<line x1="60" y1="10" x2="60" y2="15" class="steam-line steam-3" />
+</svg>
+Chai pe charcha
+</a>
+<nav>
+<a href="#menu" style="text-decoration: none; color: var(--primary); font-weight: 600;">Menu</a>
+</nav>
+</header>
+
+<section class="hero">
+<svg width="200" height="200" viewBox="0 0 100 100" style="margin-bottom: 2rem;">
+<path d="M20 40 Q20 80 50 80 Q80 80 80 40" fill="var(--accent)" />
+<path d="M20 40 L80 40" stroke="var(--primary)" stroke-width="2" />
+<path d="M80 45 Q95 45 95 55 Q95 65 80 65" fill="none" stroke="var(--primary)" stroke-width="4"/>
+<path d="M40 10 Q40 25 35 30" class="steam-line" />
+<path d="M50 5 Q50 20 55 30" class="steam-line steam-2" />
+<path d="M60 10 Q60 25 65 30" class="steam-line steam-3" />
+</svg>
+<h1 class="reveal">Soul-soothing Chai in Pune.</h1>
+<p class="reveal">Experience the authentic warmth of Pune's finest Masala Chai and Bun Maska. Where every sip tells a story.</p>
+<a href="#contact" class="btn reveal">Visit Us Today</a>
+</section>
+
+<section id="about" class="reveal">
+<div class="about-grid">
+<div>
+<h2 class="section-title" style="text-align: left;">Our Story</h2>
+<p>Located in the bustling heart of Pune, <strong>Chai pe charcha</strong> was born from a simple love for traditional brewing and meaningful conversations. We believe that the best ideas are born over a steaming "cutting" chai.</p>
+<br>
+<p>Open daily from <strong>8:00 AM to 10:00 PM</strong>, we provide a cozy corner for students, professionals, and dreamers alike.</p>
+</div>
+<div style="background: var(--accent); height: 300px; border-radius: 30px; display: flex; align-items: center; justify-content: center;">
+<svg width="150" height="150" viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="40" fill="var(--white)" opacity="0.5"/>
+<path d="M30 50 L70 50 M50 30 L50 70" stroke="var(--primary)" stroke-width="2"/>
+<text x="50" y="55" text-anchor="middle" font-size="8" fill="var(--primary)">EST. 2024</text>
+</svg>
+</div>
+</div>
+</section>
+
+<section id="menu">
+<h2 class="section-title reveal">The Favorites</h2>
+<div class="menu-grid">
+<div class="menu-card reveal">
+<svg width="60" height="60" viewBox="0 0 100 100">
+<path d="M20 40 Q50 90 80 40" fill="var(--secondary)"/>
+<path d="M40 10 Q45 20 40 30" class="steam-line"/>
+</svg>
+<h3>Signature Masala Chai</h3>
+<p>Our secret blend of cardamom, ginger, and hand-picked tea leaves from Assam.</p>
+</div>
+<div class="menu-card reveal">
+<svg width="60" height="60" viewBox="0 0 100 100">
+<rect x="20" y="40" width="60" height="40" rx="10" fill="var(--accent)"/>
+<path d="M20 55 Q50 50 80 55" stroke="var(--white)" stroke-width="4" fill="none"/>
+</svg>
+<h3>Classic Bun Maska</h3>
+<p>Soft, fresh-baked buns loaded with a generous swipe of premium Amul butter.</p>
+</div>
+<div class="menu-card reveal">
+<svg width="60" height="60" viewBox="0 0 100 100">
+<path d="M50 20 L80 70 L20 70 Z" fill="var(--secondary)"/>
+</svg>
+<h3>Crispy Samosa</h3>
+<p>Golden-fried pastry stuffed with spiced potatoes and peas. Perfect with chai.</p>
+</div>
+</div>
+</section>
+
+<section id="testimonials">
+<h2 class="section-title reveal">Chai Lovers Say</h2>
+<div class="testimonial-slider">
+<div class="testimonial-card reveal">
+"The best Bun Maska in Pune! It reminds me of the old Irani cafes but with a modern, cozy twist. My go-to spot every evening."
+<span class="author">— Rahul Deshpande</span>
+</div>
+<div class="testimonial-card reveal">
+"The Masala Chai is an absolute hug in a cup. You can actually taste the fresh ginger and spices. Perfect for long chats!"
+<span class="author">— Anjali Sharma</span>
+</div>
+<div class="testimonial-card reveal">
+"Clean, cozy, and the staff is wonderful. 'Chai pe charcha' is where I finished writing my first novel. Highly recommended!"
+<span class="author">— Vikram Kulkarni</span>
+</div>
+</div>
+</section>
+
+<section id="contact" class="reveal">
+<div class="contact-container">
+<div class="contact-info">
+<h2>Find Us</h2>
+<p>📍 Shop 12, Viman Nagar, Near Phoenix Mall, Pune - 411014</p>
+<p>📞 +91 98765 43210</p>
+<p>⏰ Open Daily: 8:00 AM - 10:00 PM</p>
+<br>
+<div style="margin-top: 1rem;">
+<svg width="100%" height="150" style="border-radius: 15px; background: rgba(255,255,255,0.1);">
+<rect width="100%" height="100%" fill="#3E2723"/>
+<circle cx="50%" cy="50%" r="10" fill="var(--secondary)"/>
+<text x="52%" y="45%" fill="white" font-size="12">You are here</text>
+</svg>
+</div>
+</div>
+<div class="contact-form">
+<h2>Say Hello</h2>
+<form onsubmit="event.preventDefault(); alert('Thank you for reaching out! We will get back to you over chai.');">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea rows="4" placeholder="Your Message"></textarea>
+<button type="submit" class="btn" style="border: none; cursor: pointer; width: 100%;">Send Message</button>
+</form>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+<svg width="30" height="30" viewBox="0 0 100 100">
+<path d="M30 40 Q30 20 50 20 Q70 20 70 40 L70 70 Q70 85 50 85 Q30 85 30 70 Z" fill="var(--secondary)"/>
+<path d="M70 45 Q85 45 85 55 Q85 65 70 65" fill="none" stroke="var(--primary)" stroke-width="5"/>
+</svg>
+Chai pe charcha
+</div>
+<p>© 2024 Chai pe charcha Cafe. All rights reserved.</p>
+<p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.6;">Concept design by Award-Winning Studios</p>
+</footer>
+
+<script>
+const observerOptions = {
+threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('active');
+}
+});
+}, observerOptions);
+
+document.querySelectorAll('.reveal').forEach(el => {
+observer.observe(el);
+});
+
+// Smooth scroll for nav
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+document.querySelector(this.getAttribute('href')).scrollIntoView({
+behavior: 'smooth'
+});
+});
+});
+</script>
+</body>
+</html>
