@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chai pe Charcha | Pune's Favorite Cozy Corner</title>
+<style>
+:root {
+--primary: #6F4E37;
+--secondary: #D2B48C;
+--accent: #E97451;
+--bg: #FFF8F0;
+--text: #2C1B18;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+background-color: var(--bg);
+color: var(--text);
+line-height: 1.6;
+}
+
+nav {
+background: rgba(255, 248, 240, 0.95);
+padding: 1rem 5%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: sticky;
+top: 0;
+z-index: 1000;
+box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+font-size: 1.5rem;
+font-weight: bold;
+color: var(--primary);
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.nav-links a {
+text-decoration: none;
+color: var(--text);
+margin-left: 20px;
+font-weight: 500;
+transition: color 0.3s;
+}
+
+.nav-links a:hover {
+color: var(--accent);
+}
+
+.hero {
+height: 80vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 0 20px;
+background: linear-gradient(135deg, #FFF8F0 0%, #F5E6D3 100%);
+position: relative;
+overflow: hidden;
+}
+
+.hero-shape {
+position: absolute;
+width: 300px;
+height: 300px;
+background: var(--secondary);
+border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+opacity: 0.2;
+z-index: 0;
+animation: morph 10s linear infinite;
+}
+
+@keyframes morph {
+0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%; }
+100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+}
+
+.hero-content {
+position: relative;
+z-index: 1;
+}
+
+.hero h1 {
+font-size: 3.5rem;
+color: var(--primary);
+margin-bottom: 1rem;
+}
+
+.hero p {
+font-size: 1.2rem;
+max-width: 600px;
+margin-bottom: 2rem;
+}
+
+.btn {
+background: var(--primary);
+color: white;
+padding: 12px 30px;
+text-decoration: none;
+border-radius: 50px;
+font-weight: bold;
+transition: transform 0.3s, background 0.3s;
+display: inline-block;
+}
+
+.btn:hover {
+background: var(--accent);
+transform: translateY(-3px);
+}
+
+section {
+padding: 80px 10%;
+}
+
+.section-title {
+text-align: center;
+margin-bottom: 50px;
+}
+
+.section-title h2 {
+font-size: 2.5rem;
+color: var(--primary);
+}
+
+.about {
+display: flex;
+align-items: center;
+gap: 50px;
+background: white;
+}
+
+.about-text {
+flex: 1;
+}
+
+.about-image {
+flex: 1;
+background: var(--secondary);
+height: 300px;
+border-radius: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 5rem;
+box-shadow: 20px 20px 0 var(--accent);
+}
+
+.menu-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 30px;
+}
+
+.menu-card {
+background: white;
+padding: 40px 30px;
+border-radius: 20px;
+text-align: center;
+transition: 0.3s;
+border: 1px solid #eee;
+}
+
+.menu-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+}
+
+.menu-icon {
+font-size: 3rem;
+margin-bottom: 20px;
+display: block;
+}
+
+.menu-card h3 {
+margin-bottom: 15px;
+color: var(--primary);
+}
+
+.contact-container {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 50px;
+background: var(--primary);
+color: white;
+padding: 60px;
+border-radius: 30px;
+}
+
+.info-item {
+margin-bottom: 25px;
+}
+
+.info-item h4 {
+color: var(--secondary);
+margin-bottom: 5px;
+}
+
+input, textarea {
+width: 100%;
+padding: 12px;
+margin-bottom: 15px;
+border-radius: 8px;
+border: none;
+}
+
+footer {
+text-align: center;
+padding: 40px;
+background: var(--dark);
+color: #888;
+}
+
+@media (max-width: 768px) {
+.hero h1 { font-size: 2.5rem; }
+.about { flex-direction: column; }
+.contact-container { grid-template-columns: 1fr; padding: 30px; }
+.nav-links { display: none; }
+section { padding: 50px 5%; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo">☕ Chai pe Charcha</div>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#menu">Menu</a>
+<a href="#contact">Visit</a>
+</div>
+</nav>
+
+<div class="hero">
+<div class="hero-shape"></div>
+<div class="hero-content">
+<h1>Pune's Warmest Conversations</h1>
+<p>Step into a world of cozy corners, aromatic spices, and the perfect cup of tea. Where every sip tells a story.</p>
+<a href="#menu" class="btn">Explore Menu</a>
+</div>
+</div>
+
+<section id="about" class="about">
+<div class="about-image">🛖</div>
+<div class="about-text">
+<h2 style="color: var(--primary); margin-bottom: 20px; font-size: 2.5rem;">The Cozy Vibe</h2>
+<p>Located in the heart of Pune, Chai pe Charcha isn't just a cafe; it's an emotion. Inspired by the traditional "Irani Cafe" culture with a modern rustic twist, we offer a sanctuary from the city's hustle.</p>
+<br>
+<p>Whether you're looking for a quiet spot to read or a lively corner for "charcha" with friends, our wooden decor and warm yellow lights create the perfect ambiance.</p>
+</div>
+</section>
+
+<section id="menu">
+<div class="section-title">
+<h2>Our Favorites</h2>
+<p>Handcrafted snacks and brews for your soul</p>
+</div>
+<div class="menu-grid">
+<div class="menu-card">
+<span class="menu-icon">🫖</span>
+<h3>Special Masala Chai</h3>
+<p>Our secret blend of ginger, cardamom, and hand-picked tea leaves simmered to perfection.</p>
+</div>
+<div class="menu-card">
+<span class="menu-icon">🍞</span>
+<h3>Maska Bun</h3>
+<p>Freshly baked soft buns loaded with a generous dollop of premium butter. Best enjoyed dipped in tea!</p>
+</div>
+<div class="menu-card">
+<span class="menu-icon">🍪</span>
+<h3>Osmania Biscuits</h3>
+<p>Classic salty-sweet tea biscuits that melt in your mouth. A heritage favorite.</p>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="contact-container">
+<div>
+<h2 style="margin-bottom: 30px;">Get in Touch</h2>
+<div class="info-item">
+<h4>Location</h4>
+<p>Fergusson College Road, Shivaji Nagar, Pune - 411004</p>
+</div>
+<div class="info-item">
+<h4>Opening Hours</h4>
+<p>Monday - Sunday<br>08:00 AM - 10:00 PM</p>
+</div>
+<div class="info-item">
+<h4>Contact</h4>
+<p>+91 98765 43210<br>hello@chaipecharcha.pune</p>
+</div>
+</div>
+<div>
+<form onsubmit="return false">
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea rows="5" placeholder="What's on your mind?"></textarea>
+<button class="btn" style="border: none; cursor: pointer; width: 100%;">Send Message</button>
+</form>
+</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2023 Chai pe Charcha. All rights reserved.</p>
+<p style="margin-top: 10px; font-size: 0.8rem;">Concept design</p>
+</footer>
+
+</body>
+</html>
